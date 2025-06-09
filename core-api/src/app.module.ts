@@ -3,9 +3,10 @@ import { AppController } from './app.controller';
 import { UUIDMiddleware } from '@middlewares';
 import { ConfigsModule } from '@configs';
 import { DatabasesModule } from './databases';
+import { AdminsModule } from './services/admins.module';
 
 @Module({
-  imports: [ConfigsModule, DatabasesModule],
+  imports: [ConfigsModule, DatabasesModule, AdminsModule],
   controllers: [AppController],
   providers: [],
 })
