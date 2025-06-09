@@ -1,18 +1,25 @@
-import { Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { DddAggregate } from '@libs/ddd';
-import { customAlphabet } from 'nanoid';
+import { createNanoId } from '@libs/common';
+
+type Creator = {
+  email: string;
+};
 
 @Entity()
 export class User extends DddAggregate {
   @PrimaryGeneratedColumn()
   id!: string;
 
-  constructor() {
+  @Column()
+  email!: string;
+
+  constructor(args: Creator) {
     super();
 
-    this.id = customAlphabet(
-      'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789',
-      10
-    )();
+    if (args) {
+      this.id = createNanoId();
+      this.email = args.email;
+    }
   }
 }
