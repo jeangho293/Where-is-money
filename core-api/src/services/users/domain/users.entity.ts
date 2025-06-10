@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryColumn } from 'typeorm';
 import { DddAggregate } from '@libs/ddd';
 import { createNanoId } from '@libs/common';
 
@@ -8,7 +8,7 @@ type Creator = {
 
 @Entity()
 export class User extends DddAggregate {
-  @PrimaryGeneratedColumn()
+  @PrimaryColumn()
   id!: string;
 
   @Column()

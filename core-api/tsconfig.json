@@ -22,7 +22,8 @@
     "paths": {
       "@middlewares": ["middlewares"],
       "@configs": ["configs"],
-      "@libs/*": ["libs/*"]
+      "@libs/*": ["libs/*"],
+      "@routes/*": ["routes/*"]
     }
   }
 }
