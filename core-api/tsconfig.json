@@ -23,7 +23,8 @@
       "@configs": ["configs"],
       "@databases": ["databases"],
       "@routes/*": ["routes/*"],
-      "@libs/*": ["libs/*"]
+      "@libs/*": ["libs/*"],
+      "@middlewares": ["middlewares"]
     }
   }
 }

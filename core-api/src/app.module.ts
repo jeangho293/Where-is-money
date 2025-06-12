@@ -1,11 +1,17 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ConfigsModule } from '@configs';
 import { DatabasesModule } from '@databases';
 import { GlobalServiceModule } from './services/global-service.module';
+import { ContextInjectMiddleware, UUIDMiddlewares } from '@middlewares';
+import { ContextModule } from '@libs/context';
 
 @Module({
-  imports: [ConfigsModule, DatabasesModule, GlobalServiceModule],
+  imports: [ContextModule, ConfigsModule, DatabasesModule, GlobalServiceModule],
   controllers: [],
   providers: [],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(ContextInjectMiddleware, UUIDMiddlewares).forRoutes('*');
+  }
+}
