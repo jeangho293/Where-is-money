@@ -8,5 +8,5 @@ import { ConfigsService } from '@configs';
   const config = app.get(ConfigsService);
 
   const { port } = config.server;
-  await app.listen(port, () => console.log(`server is running on ${port}`));
+  await app.listen(port, () => console.log(`server is running on ${port}.`));
 })();
