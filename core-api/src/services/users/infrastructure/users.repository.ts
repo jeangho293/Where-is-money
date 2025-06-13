@@ -5,4 +5,8 @@ import { User } from '../domain/users.entity';
 @Injectable()
 export class UsersRepository extends DddRepository<User> {
   entityClass = User;
+
+  async find() {
+    return this.entityManager.find(this.entityClass, {});
+  }
 }
